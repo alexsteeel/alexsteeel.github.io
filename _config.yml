@@ -44,9 +44,9 @@ disqus: alexsteeel                          # Your website Shortname on disqus
 
 ### Analytics ###
 analytics:
-  enabled: false                                        # Set true to enable analytics
+  enabled: true
   google:
-    tracking_id: your-google-tracking-id
+    tracking_id: G-4SEVWZXNGR
 
 
 ### Defaults for collections ###
