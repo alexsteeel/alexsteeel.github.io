@@ -2,7 +2,7 @@
 title               : alexsteeel
 description         : >-
                       Счастливый кодер.
-baseurl             : "/alexsteeel.github.io"
+baseurl             : "/"
 repository          : alexsteeel/alexsteeel.github.io
 remote_theme        : YoussefRaafatNasry/portfolYOU
 
