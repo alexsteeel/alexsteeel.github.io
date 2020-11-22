@@ -41,7 +41,6 @@ description: Исследование рынка электронных книг
 
 Активируем промокод на 30%, списываем бонусные рубли (так же получены через промокод), списываем рубли со счёта (пополнено бонусами Спасибо) и оплачиваем через VK Pay с 10% кешбеком. Итого 97,42р. В Читай-Город, например, бумажная версия стоит [522 руб](https://www.chitai-gorod.ru/catalog/book/963065/).
 
-```liquid
 {% capture carousel_images %}
 https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0001/ChrisBaily_site.png
 https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0001/ChrisBaily_site_2.png
@@ -49,13 +48,10 @@ https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/
 https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0001/ChrisBaily_site_4.png
 {% endcapture %}
 {% include elements/carousel.html %}
-```
 
 По аналогии, книга Тима Рафгардена "Совершенный алгоритм. Основы" может быть приобретена примерно за 200р. Бумажная версия в Читай-Город стоит [934 руб](https://www.chitai-gorod.ru/catalog/book/1168773/).
 
-```liquid
 ![alt text](https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0001/TimRoughgarden_01.png)
-```
 
 Конечно, при расчётах необходимо учитывать стоимость планшета  или электронной книги, а также личное удобство. Кому-то неудобно читать электронные версии в принципе, кто-то мало читает и приобретать отдельное устройство для пары книг в год не имеет смысла. Но в остальных случаях советы выше могут сэкономить немало средств на новые знания.
 
