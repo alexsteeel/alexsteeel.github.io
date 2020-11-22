@@ -44,8 +44,6 @@ description: Исследование рынка электронных книг
 {% capture carousel_images %}
 https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0001/ChrisBaily_site.png
 https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0001/ChrisBaily_site_2.png
-https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0001/ChrisBaily_site_3.png
-https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0001/ChrisBaily_site_4.png
 {% endcapture %}
 {% include elements/carousel.html %}
 
