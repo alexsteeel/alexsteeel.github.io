@@ -39,7 +39,7 @@ collections:
 
 
 ### Disqus ###
-disqus: alexsteeel                          # Your website Shortname on disqus
+disqus: https-alexsteeel-github-io
 
 
 ### Analytics ###
@@ -60,7 +60,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      comments: true                                   # Set to true to enable disqus comments
+      comments: true
 
 ### Exclude from processing ###
 exclude:
