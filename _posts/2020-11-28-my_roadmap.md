@@ -20,7 +20,7 @@ description: Мой roadmap по развитию
 4. Библиотеки;
 5. Инструменты.
 
-Картинку для просмотра можно открыть в новой вкладке. Или скачать [исходник в graphml](https://github.com/alexsteeel/alexsteeel.github.io/blob/master/_posts/_files/0002/Roadmap.graphml). Открывается с помощью бесплатного ПО [yEd](https://www.yworks.com/products/yed#).
+Картинку для просмотра можно открыть в новой вкладке. Или скачать [исходник в graphml](https://github.com/alexsteeel/alexsteeel.github.io/blob/master/_posts/_files/0002/). Открывается с помощью бесплатного ПО [yEd](https://www.yworks.com/products/yed#).
 
 ![](https://raw.githubusercontent.com/alexsteeel/alexsteeel.github.io/master/_posts/_images/0002/Roadmap.png)
 
