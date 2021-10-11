@@ -1,7 +1,7 @@
 ### Site Settings ###
 title               : alexsteeel
 description         : >-
-                      Счастливый кодер.
+                      .NET developer.
 baseurl             : "/"
 repository          : alexsteeel/alexsteeel.github.io
 remote_theme        : YoussefRaafatNasry/portfolYOU
