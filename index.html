@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Agents Workflow</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
     <style>
@@ -59,6 +59,35 @@
             font-size: 14px;
             margin-right: 4px;
         }
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: var(--font-family);
+            font-size: 12px;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .legend-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 0;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -78,19 +107,19 @@
                         <text x="500" y="855" font-family="sans-serif" font-size="12">Project and task manager</text>
                     </g>
 
-                    <!-- Opus/Sonnet -->
+                    <!-- Opus/Sonnet (LLM - purple) -->
                     <g class="clickable" data-id="opus-sonnet">
-                        <rect x="786.85" y="840.16" width="163.64" height="39" rx="4" fill="white" stroke="black"/>
-                        <text x="810" y="864" font-family="sans-serif" font-size="12">Opus 4.5, Sonnet 4.5</text>
+                        <rect x="786.85" y="840.16" width="163.64" height="39" rx="4" fill="#f3e8ff" stroke="#c084fc" stroke-width="1.5"/>
+                        <text x="815" y="864" font-family="sans-serif" font-size="12">Opus 4.5, Sonnet 4.5</text>
                     </g>
 
                     <!-- Sandbox group -->
                     <path d="M201 304 L201 801 L1094.5 801 L1094.5 304 Z M202 326 L202 800 L1093.5 800 L1093.5 326 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
                     <text x="203" y="319" fill="white" font-family="sans-serif" font-size="12">Sandbox with isolated infrastructure</text>
 
-                    <!-- Claude Code -->
+                    <!-- Claude Code (CLI Tool - green) -->
                     <g class="clickable" data-id="claude-code">
-                        <rect x="744" y="504.49" width="110" height="44" rx="4" fill="white" stroke="black"/>
+                        <rect x="744" y="504.49" width="110" height="44" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
                         <text x="763" y="531" font-family="sans-serif" font-size="12">Claude Code</text>
                     </g>
 
@@ -108,9 +137,9 @@
                         <text x="863" y="717" font-family="sans-serif" font-size="12">(Postgres, MinIO, Redis)</text>
                     </g>
 
-                    <!-- Codex CLI -->
+                    <!-- Codex CLI (CLI Tool - green) -->
                     <g class="clickable" data-id="codex-cli">
-                        <rect x="366.5" y="734.66" width="92" height="39" rx="4" fill="white" stroke="black"/>
+                        <rect x="366.5" y="734.66" width="92" height="39" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
                         <text x="384" y="759" font-family="sans-serif" font-size="12">Codex CLI</text>
                     </g>
 
@@ -126,39 +155,39 @@
                     <path d="M226 431.73 L226 695.2 L714 695.2 L714 431.73 Z M227 453.73 L227 694.2 L713 694.2 L713 453.73 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
                     <text x="228" y="447" fill="white" font-family="sans-serif" font-size="12">Commands</text>
 
-                    <!-- codex-review -->
+                    <!-- codex-review (Command - orange) -->
                     <g class="clickable" data-id="codex-review">
-                        <rect x="388" y="573.53" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <rect x="388" y="573.53" width="132" height="44" rx="4" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
                         <text x="417" y="600" font-family="sans-serif" font-size="12">codex-review</text>
                     </g>
 
-                    <!-- ralph-plan-task -->
+                    <!-- ralph-plan-task (Command - orange) -->
                     <g class="clickable" data-id="ralph-plan-task">
-                        <rect x="567" y="490.03" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <rect x="567" y="490.03" width="132" height="44" rx="4" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
                         <text x="590" y="517" font-family="sans-serif" font-size="12">ralph-plan-task</text>
                     </g>
 
-                    <!-- ralph-implement-python-task -->
+                    <!-- ralph-implement-python-task (Command - orange) -->
                     <g class="clickable" data-id="ralph-implement-python-task">
-                        <rect x="340.5" y="490.03" width="196.5" height="44" rx="4" fill="white" stroke="black"/>
+                        <rect x="340.5" y="490.03" width="196.5" height="44" rx="4" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
                         <text x="356" y="517" font-family="sans-serif" font-size="12">ralph-implement-python-task</text>
                     </g>
 
-                    <!-- create-tasks -->
+                    <!-- create-tasks (Command - orange) -->
                     <g class="clickable" data-id="create-tasks">
-                        <rect x="567" y="573.53" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <rect x="567" y="573.53" width="132" height="44" rx="4" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
                         <text x="599" y="600" font-family="sans-serif" font-size="12">create-tasks</text>
                     </g>
 
-                    <!-- ralph-batch-check -->
+                    <!-- ralph-batch-check (Command - orange) -->
                     <g class="clickable" data-id="ralph-batch-check">
-                        <rect x="246" y="573.53" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <rect x="246" y="573.53" width="132" height="44" rx="4" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
                         <text x="261" y="600" font-family="sans-serif" font-size="12">ralph-batch-check</text>
                     </g>
 
-                    <!-- kube-upgrade-tool -->
+                    <!-- kube-upgrade-tool (Command - orange) -->
                     <g class="clickable" data-id="kube-upgrade-tool">
-                        <rect x="246" y="636.2" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <rect x="246" y="636.2" width="132" height="44" rx="4" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
                         <text x="259" y="663" font-family="sans-serif" font-size="12">kube-upgrade-tool</text>
                     </g>
 
@@ -176,15 +205,15 @@
                     <path d="M498.5 701.81 L498.5 786.16 L822.5 786.16 L822.5 701.81 Z M499.5 723.81 L499.5 785.16 L821.5 785.16 L821.5 723.81 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
                     <text x="500.5" y="717" fill="white" font-family="sans-serif" font-size="12">Skills</text>
 
-                    <!-- Playwright -->
+                    <!-- Playwright (Skill - blue) -->
                     <g class="clickable" data-id="playwright">
-                        <rect x="675.5" y="737.16" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <rect x="675.5" y="737.16" width="132" height="34" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
                         <text x="712" y="759" font-family="sans-serif" font-size="12">Playwright</text>
                     </g>
 
-                    <!-- Markdown tasks -->
+                    <!-- Markdown tasks (Skill - blue) -->
                     <g class="clickable" data-id="markdown-tasks">
-                        <rect x="513.5" y="737.16" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <rect x="513.5" y="737.16" width="132" height="34" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
                         <text x="533" y="759" font-family="sans-serif" font-size="12">Markdown tasks</text>
                     </g>
 
@@ -206,15 +235,15 @@
                     <path d="M340.5 339.34 L340.5 423.69 L714 423.69 L714 339.34 Z M341.5 361.34 L341.5 422.69 L713 422.69 L713 361.34 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
                     <text x="342.5" y="354" fill="white" font-family="sans-serif" font-size="12">Ralph Wiggum Tools</text>
 
-                    <!-- ralph implement -->
+                    <!-- ralph implement (CLI Tool - green) -->
                     <g class="clickable" data-id="ralph-implement">
-                        <rect x="405" y="374.69" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <rect x="405" y="374.69" width="132" height="34" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
                         <text x="424" y="396" font-family="sans-serif" font-size="12">ralph implement</text>
                     </g>
 
-                    <!-- ralph plan -->
+                    <!-- ralph plan (CLI Tool - green) -->
                     <g class="clickable" data-id="ralph-plan">
-                        <rect x="567" y="374.69" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <rect x="567" y="374.69" width="132" height="34" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
                         <text x="604" y="396" font-family="sans-serif" font-size="12">ralph plan</text>
                     </g>
 
@@ -243,11 +272,11 @@
                         <text x="960" y="567" font-family="sans-serif" font-size="12">checks</text>
                     </g>
 
-                    <!-- chatgpt codex -->
+                    <!-- chatgpt codex (LLM - purple) -->
                     <g class="clickable" data-id="chatgpt-codex">
-                        <rect x="343.34" y="831.16" width="118" height="44" rx="4" fill="white" stroke="black"/>
-                        <text x="369" y="850" font-family="sans-serif" font-size="12">chatgpt 5.2</text>
-                        <text x="371" y="866" font-family="sans-serif" font-size="12">codex high</text>
+                        <rect x="343.34" y="831.16" width="118" height="44" rx="4" fill="#f3e8ff" stroke="#c084fc" stroke-width="1.5"/>
+                        <text x="372" y="850" font-family="sans-serif" font-size="12">chatgpt 5.2</text>
+                        <text x="372" y="866" font-family="sans-serif" font-size="12">codex high</text>
                     </g>
 
                     <!-- Hooks arrow -->
@@ -298,9 +327,9 @@
                     <path d="M953.75 131.34 L953.75 238.3 L1117.39 238.3 L1117.39 131.34 Z M954.75 153.34 L954.75 237.3 L1116.39 237.3 L1116.39 153.34 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
                     <text x="955.75" y="146" fill="white" font-family="sans-serif" font-size="12">Tools</text>
 
-                    <!-- Shannon -->
+                    <!-- Shannon (CLI Tool - green) -->
                     <g class="clickable" data-id="shannon">
-                        <rect x="968.75" y="167.98" width="132" height="55.31" rx="4" fill="white" stroke="black"/>
+                        <rect x="968.75" y="167.98" width="132" height="55.31" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
                         <text x="980" y="200" font-family="sans-serif" font-size="12">Shannon (pentests)</text>
                     </g>
 
@@ -314,6 +343,26 @@
                 <button class="zoom-btn" id="zoom-in" title="Zoom In">+</button>
                 <button class="zoom-btn" id="zoom-out" title="Zoom Out">-</button>
                 <button class="zoom-btn" id="zoom-reset" title="Reset">R</button>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">Legend</div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #fff7ed; border: 1.5px solid #fdba74;"></div>
+                    <span>Commands</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #eff6ff; border: 1.5px solid #93c5fd;"></div>
+                    <span>Skills</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f3e8ff; border: 1.5px solid #c084fc;"></div>
+                    <span>LLM</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f0fdf4; border: 1.5px solid #86efac;"></div>
+                    <span>CLI Tools</span>
+                </div>
             </div>
         </div>
         <div id="info-panel">
