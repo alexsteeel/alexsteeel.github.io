@@ -1,0 +1,3 @@
+# gemini cli
+
+Details for gemini cli...

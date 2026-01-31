@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents Workflow</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+    <style>
+        .diagram-svg .clickable {
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .diagram-svg .clickable:hover rect {
+            stroke: var(--accent-color);
+            stroke-width: 2;
+        }
+        .diagram-svg .clickable.selected rect {
+            stroke: var(--accent-color);
+            stroke-width: 2.5;
+            filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+        }
+        .diagram-svg {
+            width: 100%;
+            height: 100%;
+        }
+        #diagram-container {
+            overflow: hidden;
+            padding: 0;
+            position: relative;
+        }
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .zoom-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border-color);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+        }
+        .zoom-btn:hover {
+            background: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+        .icon {
+            font-size: 14px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="diagram-container">
+            <svg id="diagram" class="diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 965 851">
+                <defs>
+                    <clipPath id="clip"><rect x="0" y="0" width="965" height="851"/></clipPath>
+                </defs>
+                <g transform="translate(-186,-44)">
+                    <!-- Background -->
+                    <rect x="186" y="44" width="965" height="851" fill="white"/>
+
+                    <!-- Project and task manager -->
+                    <g class="clickable" data-id="project-manager">
+                        <rect x="486.5" y="825.16" width="186" height="50" rx="4" fill="white" stroke="black"/>
+                        <text x="500" y="855" font-family="sans-serif" font-size="12">Project and task manager</text>
+                    </g>
+
+                    <!-- Opus/Sonnet -->
+                    <g class="clickable" data-id="opus-sonnet">
+                        <rect x="786.85" y="840.16" width="163.64" height="39" rx="4" fill="white" stroke="black"/>
+                        <text x="810" y="864" font-family="sans-serif" font-size="12">Opus 4.5, Sonnet 4.5</text>
+                    </g>
+
+                    <!-- Sandbox group -->
+                    <path d="M201 304 L201 801 L1094.5 801 L1094.5 304 Z M202 326 L202 800 L1093.5 800 L1093.5 326 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
+                    <text x="203" y="319" fill="white" font-family="sans-serif" font-size="12">Sandbox with isolated infrastructure</text>
+
+                    <!-- Claude Code -->
+                    <g class="clickable" data-id="claude-code">
+                        <rect x="744" y="504.49" width="110" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="763" y="531" font-family="sans-serif" font-size="12">Claude Code</text>
+                    </g>
+
+                    <!-- Repository copy -->
+                    <g class="clickable" data-id="repository-copy">
+                        <rect x="757.75" y="369.69" width="141" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="783" y="388" font-family="sans-serif" font-size="12">Repository copy</text>
+                        <text x="790" y="405" font-family="sans-serif" font-size="12">(git worktree)</text>
+                    </g>
+
+                    <!-- Infrastructure -->
+                    <g class="clickable" data-id="infrastructure">
+                        <rect x="852.5" y="675.59" width="176.5" height="57.28" rx="4" fill="white" stroke="black"/>
+                        <text x="901" y="701" font-family="sans-serif" font-size="12">Infrastructure</text>
+                        <text x="863" y="717" font-family="sans-serif" font-size="12">(Postgres, MinIO, Redis)</text>
+                    </g>
+
+                    <!-- Codex CLI -->
+                    <g class="clickable" data-id="codex-cli">
+                        <rect x="366.5" y="734.66" width="92" height="39" rx="4" fill="white" stroke="black"/>
+                        <text x="384" y="759" font-family="sans-serif" font-size="12">Codex CLI</text>
+                    </g>
+
+                    <!-- Arrows from Claude Code -->
+                    <path d="M835.67 548.49 L835.67 832.15" fill="none" stroke="black"/>
+                    <path d="M835.67 840.15 L840.67 828.15 L835.67 831.15 L830.67 828.15 Z" fill="black"/>
+                    <path d="M826.5 504.44 L828.1 421.69" fill="none" stroke="black"/>
+                    <path d="M828.25 413.69 L823.02 425.59 L828.08 422.69 L833.02 425.78 Z" fill="black"/>
+                    <path d="M845.7 548.49 L845.7 620.76 L940.75 620.76 L940.75 667.58" fill="none" stroke="black"/>
+                    <path d="M940.75 675.58 L945.75 663.58 L940.75 666.58 L935.75 663.58 Z" fill="black"/>
+
+                    <!-- Commands group -->
+                    <path d="M226 431.73 L226 695.2 L714 695.2 L714 431.73 Z M227 453.73 L227 694.2 L713 694.2 L713 453.73 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
+                    <text x="228" y="447" fill="white" font-family="sans-serif" font-size="12">Commands</text>
+
+                    <!-- codex-review -->
+                    <g class="clickable" data-id="codex-review">
+                        <rect x="388" y="573.53" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="417" y="600" font-family="sans-serif" font-size="12">codex-review</text>
+                    </g>
+
+                    <!-- ralph-plan-task -->
+                    <g class="clickable" data-id="ralph-plan-task">
+                        <rect x="567" y="490.03" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="590" y="517" font-family="sans-serif" font-size="12">ralph-plan-task</text>
+                    </g>
+
+                    <!-- ralph-implement-python-task -->
+                    <g class="clickable" data-id="ralph-implement-python-task">
+                        <rect x="340.5" y="490.03" width="196.5" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="356" y="517" font-family="sans-serif" font-size="12">ralph-implement-python-task</text>
+                    </g>
+
+                    <!-- create-tasks -->
+                    <g class="clickable" data-id="create-tasks">
+                        <rect x="567" y="573.53" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="599" y="600" font-family="sans-serif" font-size="12">create-tasks</text>
+                    </g>
+
+                    <!-- ralph-batch-check -->
+                    <g class="clickable" data-id="ralph-batch-check">
+                        <rect x="246" y="573.53" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="261" y="600" font-family="sans-serif" font-size="12">ralph-batch-check</text>
+                    </g>
+
+                    <!-- kube-upgrade-tool -->
+                    <g class="clickable" data-id="kube-upgrade-tool">
+                        <rect x="246" y="636.2" width="132" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="259" y="663" font-family="sans-serif" font-size="12">kube-upgrade-tool</text>
+                    </g>
+
+                    <!-- Command arrows -->
+                    <path d="M744 526.49 L722 526.49" fill="none" stroke="black"/>
+                    <path d="M714 526.49 L726 531.49 L723 526.49 L726 521.49 Z" fill="black"/>
+                    <path d="M454 617.53 L454 648.03 L412.5 648.03 L412.5 726.62" fill="none" stroke="black"/>
+                    <path d="M412.5 734.62 L417.5 722.62 L412.5 725.62 L407.5 722.62 Z" fill="black"/>
+                    <path d="M438.75 534.03 L438.75 549.53 L454 549.53 L454 565.49" fill="none" stroke="black"/>
+                    <path d="M454 573.49 L459 561.49 L454 564.49 L449 561.49 Z" fill="black"/>
+                    <path d="M373.25 534.03 L373.25 549.53 L312 549.53 L312 565.49" fill="none" stroke="black"/>
+                    <path d="M312 573.49 L317 561.49 L312 564.49 L307 561.49 Z" fill="black"/>
+
+                    <!-- Skills group -->
+                    <path d="M498.5 701.81 L498.5 786.16 L822.5 786.16 L822.5 701.81 Z M499.5 723.81 L499.5 785.16 L821.5 785.16 L821.5 723.81 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
+                    <text x="500.5" y="717" fill="white" font-family="sans-serif" font-size="12">Skills</text>
+
+                    <!-- Playwright -->
+                    <g class="clickable" data-id="playwright">
+                        <rect x="675.5" y="737.16" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <text x="712" y="759" font-family="sans-serif" font-size="12">Playwright</text>
+                    </g>
+
+                    <!-- Markdown tasks -->
+                    <g class="clickable" data-id="markdown-tasks">
+                        <rect x="513.5" y="737.16" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <text x="533" y="759" font-family="sans-serif" font-size="12">Markdown tasks</text>
+                    </g>
+
+                    <!-- Skills arrows -->
+                    <path d="M762.33 548.49 L762.33 558.03 L741.5 558.03 L741.5 729.12" fill="none" stroke="black"/>
+                    <path d="M741.5 737.12 L746.5 725.12 L741.5 728.12 L736.5 725.12 Z" fill="black"/>
+                    <path d="M458.5 754.16 L505.47 754.16" fill="none" stroke="black"/>
+                    <path d="M513.47 754.16 L501.47 749.16 L504.47 754.16 L501.47 759.16 Z" fill="black"/>
+                    <path d="M504.25 534.03 L504.25 549.53 L535.5 549.53 L535.5 729.11" fill="none" stroke="black"/>
+                    <path d="M535.5 737.11 L540.5 725.11 L535.5 728.11 L530.5 725.11 Z" fill="black"/>
+                    <path d="M633 534.03 L633 549.53 L551.5 549.53 L551.5 648.03 L579.5 648.03 L579.5 729.12" fill="none" stroke="black"/>
+                    <path d="M579.5 737.12 L584.5 725.12 L579.5 728.12 L574.5 725.12 Z" fill="black"/>
+                    <path d="M633 617.53 L633 648.03 L623.5 648.03 L623.5 729.12" fill="none" stroke="black"/>
+                    <path d="M623.5 737.12 L628.5 725.12 L623.5 728.12 L618.5 725.12 Z" fill="black"/>
+                    <path d="M579.5 771.16 L579.5 817.13" fill="none" stroke="black"/>
+                    <path d="M579.5 825.13 L584.5 813.13 L579.5 816.13 L574.5 813.13 Z" fill="black"/>
+
+                    <!-- Ralph Wiggum Tools group -->
+                    <path d="M340.5 339.34 L340.5 423.69 L714 423.69 L714 339.34 Z M341.5 361.34 L341.5 422.69 L713 422.69 L713 361.34 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
+                    <text x="342.5" y="354" fill="white" font-family="sans-serif" font-size="12">Ralph Wiggum Tools</text>
+
+                    <!-- ralph implement -->
+                    <g class="clickable" data-id="ralph-implement">
+                        <rect x="405" y="374.69" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <text x="424" y="396" font-family="sans-serif" font-size="12">ralph implement</text>
+                    </g>
+
+                    <!-- ralph plan -->
+                    <g class="clickable" data-id="ralph-plan">
+                        <rect x="567" y="374.69" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <text x="604" y="396" font-family="sans-serif" font-size="12">ralph plan</text>
+                    </g>
+
+                    <!-- Ralph arrows -->
+                    <path d="M714 393.19 L737.5 393.19 L737.5 439.19 L771.5 439.19 L771.5 496.46" fill="none" stroke="black"/>
+                    <path d="M771.5 504.46 L776.5 492.46 L771.5 495.46 L766.5 492.46 Z" fill="black"/>
+                    <path d="M471 408.69 L471 439.19 L438.75 439.19 L438.75 481.98" fill="none" stroke="black"/>
+                    <path d="M438.75 489.98 L443.75 477.98 L438.75 480.98 L433.75 477.98 Z" fill="black"/>
+                    <path d="M633 408.69 L633 481.99" fill="none" stroke="black"/>
+                    <path d="M633 489.99 L638 477.99 L633 480.99 L628 477.99 Z" fill="black"/>
+
+                    <!-- Hooks group -->
+                    <path d="M884 438.19 L884 594.44 L1070 594.44 L1070 438.19 Z M885 460.19 L885 593.44 L1069 593.44 L1069 460.19 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
+                    <text x="886" y="453" fill="white" font-family="sans-serif" font-size="12">Hooks</text>
+
+                    <!-- Security checks -->
+                    <g class="clickable" data-id="security-checks">
+                        <rect x="913" y="473.53" width="132" height="34" rx="4" fill="white" stroke="black"/>
+                        <text x="936" y="495" font-family="sans-serif" font-size="12">Security checks</text>
+                    </g>
+
+                    <!-- Implementation checks -->
+                    <g class="clickable" data-id="implementation-checks">
+                        <rect x="908.5" y="529.44" width="141" height="50" rx="4" fill="white" stroke="black"/>
+                        <text x="933" y="551" font-family="sans-serif" font-size="12">Implementation</text>
+                        <text x="960" y="567" font-family="sans-serif" font-size="12">checks</text>
+                    </g>
+
+                    <!-- chatgpt codex -->
+                    <g class="clickable" data-id="chatgpt-codex">
+                        <rect x="343.34" y="831.16" width="118" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="369" y="850" font-family="sans-serif" font-size="12">chatgpt 5.2</text>
+                        <text x="371" y="866" font-family="sans-serif" font-size="12">codex high</text>
+                    </g>
+
+                    <!-- Hooks arrow -->
+                    <path d="M854 526.49 L876 526.49" fill="none" stroke="black"/>
+                    <path d="M884 526.49 L872 521.49 L875 526.49 L872 531.49 Z" fill="black"/>
+                    <path d="M412.5 773.67 L412.5 823.16" fill="none" stroke="black"/>
+                    <path d="M412.5 831.16 L417.5 819.16 L412.5 822.16 L407.5 819.16 Z" fill="black"/>
+
+                    <!-- Agents-native repository group -->
+                    <path d="M742.75 59 L742.75 289 L913.75 289 L913.75 59 Z M743.75 81 L743.75 288 L912.75 288 L912.75 81 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
+                    <text x="744.75" y="74" fill="white" font-family="sans-serif" font-size="12">Agents-native repository</text>
+
+                    <!-- Code, tests -->
+                    <g class="clickable" data-id="code-tests">
+                        <rect x="757.75" y="103.28" width="141" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="797" y="130" font-family="sans-serif" font-size="12">Code, tests</text>
+                    </g>
+
+                    <!-- CLAUDE.md -->
+                    <g class="clickable" data-id="claude-md">
+                        <rect x="757.75" y="223.32" width="141" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="781" y="250" font-family="sans-serif" font-size="12">CLAUDE.md tree</text>
+                    </g>
+
+                    <!-- .devcontainer -->
+                    <g class="clickable" data-id="devcontainer">
+                        <rect x="757.75" y="163.3" width="141" height="44" rx="4" fill="white" stroke="black"/>
+                        <text x="790" y="190" font-family="sans-serif" font-size="12">.devcontainer</text>
+                    </g>
+
+                    <!-- Telegram -->
+                    <g class="clickable" data-id="telegram">
+                        <rect x="405" y="210.62" width="132" height="53.38" rx="4" fill="white" stroke="black"/>
+                        <text x="444" y="242" font-family="sans-serif" font-size="12">Telegram</text>
+                    </g>
+
+                    <!-- Repo arrows -->
+                    <path d="M828.25 369.65 L828.93 297.04" fill="none" stroke="black"/>
+                    <path d="M829 289.04 L823.89 300.99 L828.92 298.04 L833.89 301.09 Z" fill="black"/>
+                    <path d="M471 374.68 L471 286 L471 272" fill="none" stroke="black"/>
+                    <path d="M471 264 L466 276 L471 273 L476 276 Z" fill="black"/>
+
+                    <!-- docker compose group -->
+                    <path d="M938.75 96 L938.75 253.3 L1135.25 253.3 L1135.25 96 Z M939.75 118 L939.75 252.3 L1134.25 252.3 L1134.25 118 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
+                    <text x="940.75" y="111" fill="white" font-family="sans-serif" font-size="12">docker compose</text>
+
+                    <!-- Tools subgroup -->
+                    <path d="M953.75 131.34 L953.75 238.3 L1117.39 238.3 L1117.39 131.34 Z M954.75 153.34 L954.75 237.3 L1116.39 237.3 L1116.39 153.34 Z" fill="rgb(104,176,227)" fill-rule="evenodd"/>
+                    <text x="955.75" y="146" fill="white" font-family="sans-serif" font-size="12">Tools</text>
+
+                    <!-- Shannon -->
+                    <g class="clickable" data-id="shannon">
+                        <rect x="968.75" y="167.98" width="132" height="55.31" rx="4" fill="white" stroke="black"/>
+                        <text x="980" y="200" font-family="sans-serif" font-size="12">Shannon (pentests)</text>
+                    </g>
+
+                    <!-- Shannon arrow -->
+                    <path d="M968.72 195.64 L921.78 195.64" fill="none" stroke="black"/>
+                    <path d="M913.78 195.64 L925.78 200.64 L922.78 195.64 L925.78 190.64 Z" fill="black"/>
+                </g>
+            </svg>
+
+            <div class="zoom-controls">
+                <button class="zoom-btn" id="zoom-in" title="Zoom In">+</button>
+                <button class="zoom-btn" id="zoom-out" title="Zoom Out">-</button>
+                <button class="zoom-btn" id="zoom-reset" title="Reset">R</button>
+            </div>
+        </div>
+        <div id="info-panel">
+            <div id="content">
+                <h2>AI Agents Workflow</h2>
+                <p>Click on any element in the diagram to view its documentation.</p>
+                <p style="color: #94a3b8; font-size: 0.9em; margin-top: 2em;">
+                    Use mouse wheel to zoom, drag to pan.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize pan-zoom
+        const panZoom = svgPanZoom('#diagram', {
+            zoomEnabled: true,
+            controlIconsEnabled: false,
+            fit: true,
+            center: true,
+            minZoom: 0.5,
+            maxZoom: 3,
+            zoomScaleSensitivity: 0.3
+        });
+
+        // Zoom controls
+        document.getElementById('zoom-in').addEventListener('click', () => panZoom.zoomIn());
+        document.getElementById('zoom-out').addEventListener('click', () => panZoom.zoomOut());
+        document.getElementById('zoom-reset').addEventListener('click', () => {
+            panZoom.resetZoom();
+            panZoom.center();
+        });
+
+        // Handle clicks on diagram elements
+        document.querySelectorAll('.clickable').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const id = this.getAttribute('data-id');
+
+                document.querySelectorAll('.clickable').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+
+                loadMd(id);
+            });
+        });
+
+        async function loadMd(id) {
+            const content = document.getElementById('content');
+
+            try {
+                const response = await fetch(`docs/${id}.md`);
+                if (response.ok) {
+                    const text = await response.text();
+                    content.innerHTML = marked.parse(text);
+                } else {
+                    content.innerHTML = `<h2>Not Found</h2><p>Documentation not found for: <code>${id}</code></p><p>Create file: <code>docs/${id}.md</code></p>`;
+                }
+            } catch (e) {
+                content.innerHTML = `<h2>Error</h2><p>Failed to load documentation.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
