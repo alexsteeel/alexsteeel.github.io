@@ -1,3 +1,28 @@
-# repository copy
+# Repository Copy
 
-Details for repository copy...
+Automated git worktree management in ai-agents-sandbox.
+
+## Purpose
+
+- Isolated copy per task
+- No conflicts between parallel tasks
+- Clean state for each agent session
+
+## Automation
+
+ai-agents-sandbox автоматически:
+1. Создаёт worktree для задачи
+2. Переключает на нужную ветку
+3. Монтирует в devcontainer
+4. Удаляет после завершения
+
+## Benefits
+
+- Параллельное выполнение задач
+- Изоляция изменений
+- Автоматическая очистка
+
+## Links
+
+- [ai-agents-sandbox](https://github.com/alexsteeel/ai-agents-sandbox)
+- [Git Worktree](https://git-scm.com/docs/git-worktree)
