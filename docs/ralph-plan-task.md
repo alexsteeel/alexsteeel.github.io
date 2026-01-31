@@ -32,3 +32,7 @@ Interactive task planning command.
 ## Output
 
 Plan includes: Scope, Steps, Testing, Code context.
+
+## Links
+
+- [Source](https://github.com/alexsteeel/.claude/blob/master/commands/ralph-plan-task.md)

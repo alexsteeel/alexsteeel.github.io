@@ -32,4 +32,5 @@ Claude Code slash commands for task automation.
 
 ## Links
 
+- [GitHub](https://github.com/alexsteeel/.claude/tree/master/commands)
 - [Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code)

@@ -32,3 +32,7 @@ Create tasks from notes/ideas.
 | 1 | proj#5 | Add export |
 | 2 | proj#6 | Fix bug |
 ```
+
+## Links
+
+- [Source](https://github.com/alexsteeel/.claude/blob/master/commands/create-tasks.md)

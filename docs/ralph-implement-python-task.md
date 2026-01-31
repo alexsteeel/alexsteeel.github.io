@@ -34,3 +34,7 @@ Autonomous Python task implementation command.
 - **All tests must pass** — no skipped tests
 - **All reviews processed** — Fixed/Deferred/Declined
 - **On block** → WIP commit + status=hold + exit
+
+## Links
+
+- [Source](https://github.com/alexsteeel/.claude/blob/master/commands/ralph-implement-python-task.md)

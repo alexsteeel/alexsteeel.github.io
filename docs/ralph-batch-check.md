@@ -21,3 +21,7 @@ Runs after batch of tasks to catch:
 2. Identify failures
 3. Fix or create new tasks
 4. Report results
+
+## Links
+
+- [Source](https://github.com/alexsteeel/.claude/blob/master/commands/ralph-batch-check.md)

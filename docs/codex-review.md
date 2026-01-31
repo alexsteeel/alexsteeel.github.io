@@ -32,3 +32,7 @@ Automated code review using Codex CLI.
 - Test coverage
 - Code quality
 - UI verification
+
+## Links
+
+- [Source](https://github.com/alexsteeel/.claude/blob/master/commands/codex-review.md)

@@ -39,4 +39,5 @@ CONFIRMATION_PHRASE = "i confirm that all task phases are fully completed"
 
 ## Links
 
+- [GitHub](https://github.com/alexsteeel/.claude/tree/master/hooks)
 - [Claude Code Hooks](https://docs.anthropic.com/en/docs/claude-code)
