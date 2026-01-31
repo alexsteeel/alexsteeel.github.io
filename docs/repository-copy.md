@@ -10,17 +10,17 @@ Automated git worktree management in ai-agents-sandbox.
 
 ## Automation
 
-ai-agents-sandbox автоматически:
-1. Создаёт worktree для задачи
-2. Переключает на нужную ветку
-3. Монтирует в devcontainer
-4. Удаляет после завершения
+ai-agents-sandbox automatically:
+1. Creates worktree for the task
+2. Switches to the required branch
+3. Mounts into devcontainer
+4. Removes after completion
 
 ## Benefits
 
-- Параллельное выполнение задач
-- Изоляция изменений
-- Автоматическая очистка
+- Parallel task execution
+- Change isolation
+- Automatic cleanup
 
 ## Links
 
