@@ -413,24 +413,42 @@
         });
 
         // Handle clicks on diagram elements
+        function handleElementClick(el, e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const id = el.getAttribute('data-id');
+
+            document.querySelectorAll('.clickable').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+
+            loadMd(id);
+
+            // Scroll to info panel on mobile
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    document.getElementById('info-panel').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+
         document.querySelectorAll('.clickable').forEach(el => {
             // Prevent pan-zoom from interfering
             el.addEventListener('mousedown', e => e.stopPropagation());
-            el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+            el.addEventListener('touchstart', e => e.stopPropagation());
+            el.addEventListener('touchend', e => e.stopPropagation());
 
+            // Handle both click and touchend for iOS Safari
             el.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const id = this.getAttribute('data-id');
+                handleElementClick(this, e);
+            });
 
-                document.querySelectorAll('.clickable').forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-
-                loadMd(id);
-
-                // Scroll to info panel on mobile
-                if (window.innerWidth <= 768) {
-                    document.getElementById('info-panel').scrollIntoView({ behavior: 'smooth' });
+            // iOS Safari sometimes needs touchend
+            let touchMoved = false;
+            el.addEventListener('touchstart', () => { touchMoved = false; });
+            el.addEventListener('touchmove', () => { touchMoved = true; });
+            el.addEventListener('touchend', function(e) {
+                if (!touchMoved) {
+                    handleElementClick(this, e);
                 }
             });
         });
