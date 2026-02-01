@@ -414,6 +414,10 @@
 
         // Handle clicks on diagram elements
         document.querySelectorAll('.clickable').forEach(el => {
+            // Prevent pan-zoom from interfering
+            el.addEventListener('mousedown', e => e.stopPropagation());
+            el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+
             el.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -423,6 +427,11 @@
                 this.classList.add('selected');
 
                 loadMd(id);
+
+                // Scroll to info panel on mobile
+                if (window.innerWidth <= 768) {
+                    document.getElementById('info-panel').scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
