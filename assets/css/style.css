@@ -96,3 +96,55 @@ svg {
     line-height: 1.7;
     color: var(--text-secondary);
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    body, html {
+        overflow: auto;
+    }
+
+    .container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    #diagram-container {
+        height: 60vh;
+        min-height: 400px;
+        padding: 20px;
+        order: 1;
+    }
+
+    #info-panel {
+        width: 100%;
+        height: auto;
+        min-height: 40vh;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding: 20px;
+        order: 2;
+    }
+
+    .zoom-controls {
+        bottom: 10px !important;
+        left: 10px !important;
+    }
+
+    .zoom-btn {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 20px !important;
+    }
+
+    .legend {
+        bottom: 10px !important;
+        right: 10px !important;
+        font-size: 11px !important;
+        padding: 8px 12px !important;
+    }
+
+    #content h1, #content h2 {
+        font-size: 1.3em;
+    }
+}
