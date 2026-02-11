@@ -23,9 +23,9 @@ Anthropic's official CLI for Claude AI.
 
 ## Models
 
-- Opus 4.5 — highest capability
+- Opus 4.6 — highest capability
 - Sonnet 4.5 — balanced
-- Haiku — fast and light
+- Haiku 4.5 — fast and light
 
 ## Links
 

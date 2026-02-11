@@ -1,4 +1,4 @@
-# Opus 4.5 / Sonnet 4.5
+# Opus 4.6 / Sonnet 4.5
 
 Anthropic Claude models for AI agents.
 
@@ -6,9 +6,9 @@ Anthropic Claude models for AI agents.
 
 | Model | Use Case |
 |-------|----------|
-| Opus 4.5 | Complex tasks, planning, reviews |
+| Opus 4.6 | Complex tasks, planning, reviews |
 | Sonnet 4.5 | Balanced speed/quality |
-| Haiku | Fast, simple tasks |
+| Haiku 4.5 | Fast, simple tasks |
 
 ## In Workflow
 
