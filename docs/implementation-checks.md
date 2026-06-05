@@ -8,7 +8,7 @@ Ensures all workflow phases are completed before task closes.
 
 ## Checks
 
-- All 12 phases executed
+- All workflow phases (0–12) executed
 - Tests passing
 - Reviews processed
 - Linters clean

@@ -2,6 +2,10 @@
 
 Automated code review using Codex CLI.
 
+Runs automatically as a review→fix→re-review loop at the CLI level after
+`ralph implement` completes a task — the `/codex-review` slash command is
+the manual fallback and is not normally invoked by hand.
+
 ## Usage
 
 ```
@@ -11,7 +15,7 @@ Automated code review using Codex CLI.
 ## Features
 
 - Uses `gpt-5.5-codex` with `xhigh` reasoning
-- Iterative review with fixes
+- Iterative loop (up to 3 iterations) with `claude --resume` fixes
 - UI verification via Playwright
 - Results in task's `review` field
 

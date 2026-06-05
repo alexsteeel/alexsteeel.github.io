@@ -18,7 +18,7 @@ browser_navigate(url)
 browser_snapshot()
 browser_click(ref)
 browser_type(ref, text)
-browser_screenshot()
+browser_take_screenshot()
 ```
 
 ## In Workflow
@@ -29,4 +29,4 @@ browser_screenshot()
 ## Links
 
 - [Playwright](https://playwright.dev/)
-- [Playwright MCP](https://github.com/anthropics/mcp-servers/tree/main/src/playwright)
+- [Playwright MCP](https://github.com/microsoft/playwright-mcp)

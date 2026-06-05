@@ -23,12 +23,20 @@ ralph implement myproject 1 2 3
 
 ## Options
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `WORKING_DIR` | `$(pwd)` | Working directory |
-| `MAX_BUDGET` | unlimited | Budget per task |
-| `MAX_RETRIES` | 3 | Retry attempts |
-| `RETRY_DELAY` | 30 | Delay between retries |
+| Flag | Description |
+|------|-------------|
+| `-w, --working-dir` | Working directory for Claude |
+| `--max-budget` | Maximum budget in USD per task |
+| `--no-recovery` | Disable automatic API recovery |
+
+## Recovery (`~/.claude/.env`)
+
+| Variable | Description |
+|----------|-------------|
+| `RECOVERY_ENABLED` | Enable automatic recovery |
+| `TRANSIENT_DELAYS` | Delays for API timeout / overload |
+| `RECOVERY_DELAYS` | Delays for rate limits |
+| `CONTEXT_OVERFLOW_MAX_RETRIES` | Retries on context overflow |
 
 ## Links
 
