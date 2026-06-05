@@ -1,4 +1,4 @@
-# ChatGPT 5.2 Codex
+# ChatGPT 5.5 Codex
 
 OpenAI model for code review and generation.
 
@@ -6,7 +6,7 @@ OpenAI model for code review and generation.
 
 | Model | Description |
 |-------|-------------|
-| gpt-5.2-codex | Latest Codex model |
+| gpt-5.5-codex | Latest Codex model |
 | codex-high | High reasoning effort |
 
 ## In Workflow

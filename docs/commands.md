@@ -6,6 +6,7 @@ Claude Code slash commands for task automation.
 
 | Command | Description |
 |---------|-------------|
+| `/ralph-interview-task` | Deep interview for a detailed spec |
 | `/ralph-plan-task` | Interactive planning |
 | `/ralph-implement-python-task` | Autonomous implementation |
 | `/codex-review` | Code review via Codex |
@@ -17,6 +18,7 @@ Claude Code slash commands for task automation.
 
 ```
 ~/.claude/commands/
+├── ralph-interview-task.md
 ├── ralph-plan-task.md
 ├── ralph-implement-python-task.md
 ├── codex-review.md

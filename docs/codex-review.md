@@ -10,7 +10,7 @@ Automated code review using Codex CLI.
 
 ## Features
 
-- Uses `gpt-5.2-codex` with `xhigh` reasoning
+- Uses `gpt-5.5-codex` with `xhigh` reasoning
 - Iterative review with fixes
 - UI verification via Playwright
 - Results in task's `review` field

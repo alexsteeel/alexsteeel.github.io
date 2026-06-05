@@ -6,12 +6,16 @@ CLI tools for AI agent workflow automation.
 
 | Tool | Description |
 |------|-------------|
+| ralph interview | In-depth task interview for a detailed spec |
 | ralph implement | Autonomous task implementation |
 | ralph plan | Interactive task planning |
 
 ## Usage
 
 ```bash
+# Interview (interactive spec)
+ralph interview myproject 1
+
 # Planning (interactive)
 ralph plan myproject 1 2 3
 
